@@ -1,0 +1,33 @@
+﻿@using WebApplication2.Models.Entity
+@model List<Departman> 
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div style="margin-bottom:10px;">
+        <a class="btn btn-success" href="/Departman/Yeni"><i class="fa fa-plus-square"> Departman Ekle</i></a>
+    </div>
+  
+    <table class="table table-responsive table-hover" id="tbl">
+        <thead>
+            <tr>
+                <th>Departaman Adı</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+
+        </thead>
+        <tbody>
+            
+            @foreach (var departman in Model)
+            {
+            <tr>
+                <td>
+                    @departman.Ad
+                </td>
+              <td><a class="btn btn-primary" href="/Departman/Guncelle/@departman.Id">Güncelle</a></td>
+              <td><a class="btn btn-danger btnsil" data-id="@departman.Id">Sil</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,49 @@
+﻿@model List<WebApplication2.Models.Entity.Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin-bottom:10px;">
+    <a class="btn btn-success" href="/Personel/Yeni"><i class="fa fa-plus-square"> Personel Ekle</i></a>
+</div>
+<table class="table table-responsive" id="tbl">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Departman</th>
+            <th>Cinsiyet</th>
+            <th>Doğum Tarihi</th>
+            <th>Maaş</th>
+            <th>Evlimi</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personel in Model)
+        {
+        <tr>
+            <td>@personel.Ad</td>
+            <td>@personel.Soyad</td>
+            <td>@personel.Departman.Ad</td>
+            <td>
+                @(personel.Cinsiyet==true?"Erkek":"Kadın")
+            </td>
+            <td>
+                @if (personel.DogumTarihi != null)
+                {
+                    @personel.DogumTarihi.Value.ToString("dd-MM-yyyy");
+                }
+
+            </td>
+            <td>@personel.Maas</td>
+            <td>@(personel.Evlimi==true?"Evli":"Bekar")</td>
+            <td>@Html.ActionLink("Güncelle", "PersonelGuncelle", new { id = personel.Id }, new { @class = "btn btn-success" })</td>
+            @*<td>@Html.ActionLink("Sil", "PersonelSil", new { id = personel.Id }, new { @class = "btn btn-danger" })</td>*@
+            <td><a class="btn btn-danger btnsil" data-id="@personel.Id">Sil</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+

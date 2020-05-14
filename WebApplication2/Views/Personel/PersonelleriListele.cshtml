@@ -1,0 +1,24 @@
+﻿@model IEnumerable<WebApplication2.Models.Entity.Personel>
+<h1>Personel listesi</h1>
+
+<table class="table table-responsive" id="tbl">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Maaş</th>
+           
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personel in Model)
+        {
+            <tr>
+                <td>@personel.Ad</td>
+                <td>@personel.Soyad</td>
+                <td>@personel.Maas</td>
+            </tr>
+        }
+    </tbody>
+</table>
